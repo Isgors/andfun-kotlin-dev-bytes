@@ -33,9 +33,6 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters): Coroutin
     override suspend fun doWork(): Result {
         val database = getDatabase(applicationContext)
         val repository = VideosRepository(database)
-
-        repository.refreshVideos()
-
         return try {
             repository.refreshVideos()
             Result.success()
